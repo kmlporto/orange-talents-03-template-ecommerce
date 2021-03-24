@@ -25,7 +25,7 @@ public class UsuarioPersist {
     }
 
     public Usuario convert(PasswordEncoder passwordEncoder) {
-        return new Usuario(login, passwordEncoder.encode(senha));
+        return new Usuario(login, new SenhaLimpa(senha, passwordEncoder));
     }
 
     public String getLogin() {

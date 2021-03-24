@@ -1,6 +1,10 @@
 package br.com.zup.desafios.ecommerce.usuario;
 
-import javax.persistence.*;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import java.time.LocalDateTime;
 
 @Entity
@@ -34,8 +38,8 @@ public class Usuario {
         return dataCadastro;
     }
 
-    public Usuario(String login, String senha) {
+    public Usuario(String login, SenhaLimpa senha) {
         this.login = login;
-        this.senha = senha;
+        this.senha = senha.hash();
     }
 }
