@@ -13,17 +13,17 @@ import javax.validation.Valid;
 @RequestMapping("/usuarios")
 public class UsuarioController {
 
-    private final UsuarioRepositorio usuarioRepositorio;
+    private final UsuarioRepository usuarioRepository;
     private final PasswordEncoder passwordEncoder;
 
-    public UsuarioController(UsuarioRepositorio usuarioRepositorio, PasswordEncoder passwordEncoder) {
-        this.usuarioRepositorio = usuarioRepositorio;
+    public UsuarioController(UsuarioRepository usuarioRepository, PasswordEncoder passwordEncoder) {
+        this.usuarioRepository = usuarioRepository;
         this.passwordEncoder = passwordEncoder;
     }
 
     @PostMapping
     public ResponseEntity<UsuarioResponse> cadastro(@RequestBody @Valid UsuarioPersist persist){
-        Usuario usuario = usuarioRepositorio.save(persist.convert(passwordEncoder));
+        Usuario usuario = usuarioRepository.save(persist.convert(passwordEncoder));
 
         return ResponseEntity.ok(UsuarioResponse.convert(usuario));
     }
