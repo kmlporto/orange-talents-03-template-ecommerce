@@ -1,18 +1,15 @@
 package br.com.zup.desafios.ecommerce.produto.caracteristica;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Caracteristica {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    @Column(nullable = false)
     private String nome;
-
+    @Column(nullable = false)
     private String descricao;
 
     public Caracteristica(String nome, String descricao) {
