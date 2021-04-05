@@ -3,6 +3,7 @@ package br.com.zup.desafios.ecommerce.produto;
 import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.util.annotation.Exist;
+import br.com.zup.desafios.ecommerce.util.annotation.ListUnique;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
@@ -24,6 +25,7 @@ public class ProdutoPersist {
     private int quantidadeDisponivel;
     @NotNull
     @Size(min = 3)
+    @ListUnique
     @Exist(clazz = Caracteristica.class, field = "id")
     private List<Long> caracteristicas_id = new ArrayList<>();
     @NotBlank
