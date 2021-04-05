@@ -13,6 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 import java.util.List;
+import java.util.Set;
+import java.util.TreeSet;
+import java.util.stream.Collectors;
 
 import static br.com.zup.desafios.ecommerce.util.Path.PRODUTOS;
 import static br.com.zup.desafios.ecommerce.util.Path.V1;
@@ -34,8 +37,9 @@ public class ProdutoController {
     @PostMapping
     public ResponseEntity<ProdutoResponse> cadastra(@RequestBody @Valid ProdutoPersist produtoPersist){
         List<Caracteristica> caracteristicas = caracteristicaRepository.findAllById(produtoPersist.getCaracteristicas_id());
+
         Categoria categoria = categoriaRepository.getOne(produtoPersist.getCategoria_id());
-        Produto produto = produtoRepository.save(produtoPersist.convert(caracteristicas, categoria));
+        Produto produto = produtoRepository.save(produtoPersist.convert(Set.copyOf(caracteristicas), categoria));
 
         return ResponseEntity.ok(ProdutoResponse.convert(produto));
     }

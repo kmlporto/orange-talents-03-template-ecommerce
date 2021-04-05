@@ -3,7 +3,6 @@ package br.com.zup.desafios.ecommerce.produto;
 import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.util.annotation.Exist;
-import br.com.zup.desafios.ecommerce.util.annotation.ListUnique;
 
 import javax.validation.constraints.DecimalMin;
 import javax.validation.constraints.Min;
@@ -11,8 +10,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 public class ProdutoPersist {
     @NotBlank
@@ -25,20 +23,19 @@ public class ProdutoPersist {
     private int quantidadeDisponivel;
     @NotNull
     @Size(min = 3)
-    @ListUnique
     @Exist(clazz = Caracteristica.class, field = "id")
-    private List<Long> caracteristicas_id = new ArrayList<>();
+    private Set<Long> caracteristicas_id;
     @NotBlank
     private String descricao;
     @NotNull
     @Exist(clazz = Categoria.class, field = "id")
     private Long categoria_id;
 
-    public Produto convert(List<Caracteristica> caracteristicas, Categoria categoria) {
+    public Produto convert(Set<Caracteristica> caracteristicas, Categoria categoria) {
         return new Produto(nome, valor, quantidadeDisponivel, caracteristicas, descricao, categoria);
     }
 
-    public ProdutoPersist(@NotBlank String nome, @NotNull @DecimalMin(value = "0.00", inclusive = false) BigDecimal valor, @NotNull @Min(value = 0) int quantidadeDisponivel, @NotNull @Size(min = 3) List<Long> caracteristicas_id, @NotBlank String descricao, @NotNull Long categoria_id) {
+    public ProdutoPersist(@NotBlank String nome, @NotNull @DecimalMin(value = "0.00", inclusive = false) BigDecimal valor, @NotNull @Min(value = 0) int quantidadeDisponivel, @NotNull @Size(min = 3) Set<Long> caracteristicas_id, @NotBlank String descricao, @NotNull Long categoria_id) {
         this.nome = nome;
         this.valor = valor;
         this.quantidadeDisponivel = quantidadeDisponivel;
@@ -47,7 +44,7 @@ public class ProdutoPersist {
         this.categoria_id = categoria_id;
     }
 
-    public List<Long> getCaracteristicas_id() {
+    public Set<Long> getCaracteristicas_id() {
         return caracteristicas_id;
     }
 

@@ -13,6 +13,7 @@ import javax.persistence.ManyToOne;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 public class Produto {
@@ -26,7 +27,7 @@ public class Produto {
     @Column(nullable = false)
     private int quantidadeDisponivel;
     @ManyToMany
-    private List<Caracteristica> caracteristicas;
+    private Set<Caracteristica> caracteristicas;
     @Column(nullable = false, length = 1000)
     private String descricao;
 
@@ -39,7 +40,7 @@ public class Produto {
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal valor, int quantidadeDisponivel, List<Caracteristica> caracteristicas, String descricao, Categoria categoria) {
+    public Produto(String nome, BigDecimal valor, int quantidadeDisponivel, Set<Caracteristica> caracteristicas, String descricao, Categoria categoria) {
         this.nome = nome;
         this.valor = valor;
         this.quantidadeDisponivel = quantidadeDisponivel;
@@ -64,7 +65,7 @@ public class Produto {
         return quantidadeDisponivel;
     }
 
-    public List<Caracteristica> getCaracteristicas() {
+    public Set<Caracteristica> getCaracteristicas() {
         return caracteristicas;
     }
 
