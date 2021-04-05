@@ -14,8 +14,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import static br.com.zup.desafios.ecommerce.util.Path.AUTH;
+import static br.com.zup.desafios.ecommerce.util.Path.V1;
+
 @RestController
-@RequestMapping("/auth")
+@RequestMapping(V1 + AUTH)
 public class AutenticacaoController {
 
     private final AuthenticationManager authenticationManager;

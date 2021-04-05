@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
 
+import static br.com.zup.desafios.ecommerce.util.Path.USUARIOS;
+import static br.com.zup.desafios.ecommerce.util.Path.V1;
+
 @RestController
-@RequestMapping("/usuarios")
+@RequestMapping(V1 + USUARIOS)
 public class UsuarioController {
 
     private final UsuarioRepository usuarioRepository;

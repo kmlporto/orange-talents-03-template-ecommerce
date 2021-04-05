@@ -9,8 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 import java.util.Objects;
 
+import static br.com.zup.desafios.ecommerce.util.Path.CATEGORIAS;
+import static br.com.zup.desafios.ecommerce.util.Path.V1;
+
 @RestController
-@RequestMapping("/categorias")
+@RequestMapping(V1 + CATEGORIAS)
 public class CategoriaController {
 
     private final CategoriaRepository categoriaRepository;

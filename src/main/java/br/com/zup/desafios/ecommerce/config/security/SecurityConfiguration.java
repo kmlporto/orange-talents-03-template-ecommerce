@@ -13,6 +13,9 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
+import static br.com.zup.desafios.ecommerce.util.Path.USUARIOS;
+import static br.com.zup.desafios.ecommerce.util.Path.V1;
+
 @EnableWebSecurity
 @Configuration
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
@@ -43,7 +46,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .antMatchers(HttpMethod.POST, "/usuarios").permitAll()
+            .antMatchers(HttpMethod.POST, V1 + USUARIOS).permitAll()
             .antMatchers("/auth/**").permitAll()
             .antMatchers("/h2/**").permitAll()
             .anyRequest().authenticated()
