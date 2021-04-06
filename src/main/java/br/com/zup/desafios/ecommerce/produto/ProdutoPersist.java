@@ -2,6 +2,7 @@ package br.com.zup.desafios.ecommerce.produto;
 
 import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
+import br.com.zup.desafios.ecommerce.usuario.Usuario;
 import br.com.zup.desafios.ecommerce.util.annotation.Exist;
 
 import javax.validation.constraints.DecimalMin;
@@ -31,8 +32,8 @@ public class ProdutoPersist {
     @Exist(clazz = Categoria.class, field = "id")
     private Long categoria_id;
 
-    public Produto convert(Set<Caracteristica> caracteristicas, Categoria categoria) {
-        return new Produto(nome, valor, quantidadeDisponivel, caracteristicas, descricao, categoria);
+    public Produto convert(Set<Caracteristica> caracteristicas, Categoria categoria, Usuario dono) {
+        return new Produto(nome, valor, quantidadeDisponivel, caracteristicas, descricao, categoria, dono);
     }
 
     public ProdutoPersist(@NotBlank String nome, @NotNull @DecimalMin(value = "0.00", inclusive = false) BigDecimal valor, @NotNull @Min(value = 0) int quantidadeDisponivel, @NotNull @Size(min = 3) Set<Long> caracteristicas_id, @NotBlank String descricao, @NotNull Long categoria_id) {

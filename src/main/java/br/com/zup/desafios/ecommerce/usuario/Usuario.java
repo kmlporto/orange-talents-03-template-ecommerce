@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 import java.util.Collection;
+import java.util.Objects;
 
 @Entity
 public class Usuario implements UserDetails {
@@ -40,6 +41,19 @@ public class Usuario implements UserDetails {
 
     public LocalDateTime getDataCadastro() {
         return dataCadastro;
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (!(o instanceof Usuario)) return false;
+        Usuario usuario = (Usuario) o;
+        return Objects.equals(id, usuario.id) && Objects.equals(login, usuario.login) && Objects.equals(senha, usuario.senha) && Objects.equals(dataCadastro, usuario.dataCadastro);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(id, login, senha, dataCadastro);
     }
 
     public Usuario(String login, SenhaLimpa senha) {

@@ -15,6 +15,7 @@ public class ProdutoResponse {
     private String descricao;
     private Long categoria_id;
     private LocalDateTime dataCriacao;
+    private Long dono_id;
 
     public ProdutoResponse(Produto produto) {
         this.id = produto.getId();
@@ -25,6 +26,7 @@ public class ProdutoResponse {
         this.descricao = produto.getDescricao();
         this.categoria_id = produto.getCategoria().getId();
         this.dataCriacao = produto.getDataCriacao();
+        this.dono_id = produto.getDono().getId();
     }
 
     public static ProdutoResponse convert(Produto produto) {
@@ -61,5 +63,9 @@ public class ProdutoResponse {
 
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
+    }
+
+    public Long getDono_id() {
+        return dono_id;
     }
 }

@@ -2,7 +2,10 @@ package br.com.zup.desafios.ecommerce.produto;
 
 import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
+import br.com.zup.desafios.ecommerce.produto.imagem.Imagem;
+import br.com.zup.desafios.ecommerce.usuario.Usuario;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -10,10 +13,12 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 @Entity
 public class Produto {
@@ -30,23 +35,26 @@ public class Produto {
     private Set<Caracteristica> caracteristicas;
     @Column(nullable = false, length = 1000)
     private String descricao;
-
     @ManyToOne
     private Categoria categoria;
-
     private LocalDateTime dataCriacao = LocalDateTime.now();
+    @OneToMany(mappedBy = "produto", cascade = CascadeType.MERGE)
+    private List<Imagem> imagens;
+    @ManyToOne
+    private Usuario dono;
 
     @Deprecated
     public Produto() {
     }
 
-    public Produto(String nome, BigDecimal valor, int quantidadeDisponivel, Set<Caracteristica> caracteristicas, String descricao, Categoria categoria) {
+    public Produto(String nome, BigDecimal valor, int quantidadeDisponivel, Set<Caracteristica> caracteristicas, String descricao, Categoria categoria, Usuario dono) {
         this.nome = nome;
         this.valor = valor;
         this.quantidadeDisponivel = quantidadeDisponivel;
         this.caracteristicas = caracteristicas;
         this.descricao = descricao;
         this.categoria = categoria;
+        this.dono = dono;
     }
 
     public Long getId() {
@@ -79,5 +87,22 @@ public class Produto {
 
     public LocalDateTime getDataCriacao() {
         return dataCriacao;
+    }
+
+    public List<Imagem> getImagens() {
+        return imagens;
+    }
+
+    public Usuario getDono() {
+        return dono;
+    }
+
+    public void addImagens(Set<String> links) {
+        Set<Imagem> collect = links.stream().map(link -> new Imagem(this, link)).collect(Collectors.toSet());
+        imagens.addAll(collect);
+    }
+
+    public boolean pertenceAo(Usuario usuarioLogado) {
+        return dono.equals(usuarioLogado);
     }
 }
