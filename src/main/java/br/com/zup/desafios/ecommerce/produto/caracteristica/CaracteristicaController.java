@@ -9,10 +9,11 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.validation.Valid;
 
 import static br.com.zup.desafios.ecommerce.util.Path.CARACTERISTICAS;
+import static br.com.zup.desafios.ecommerce.util.Path.PRODUTOS;
 import static br.com.zup.desafios.ecommerce.util.Path.V1;
 
 @RestController
-@RequestMapping(V1 + CARACTERISTICAS)
+@RequestMapping(V1 + PRODUTOS + CARACTERISTICAS)
 public class CaracteristicaController {
 
     private final CaracteristicaRepository caracteristicaRepository;
