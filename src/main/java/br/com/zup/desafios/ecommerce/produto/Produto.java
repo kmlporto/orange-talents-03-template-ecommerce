@@ -3,6 +3,7 @@ package br.com.zup.desafios.ecommerce.produto;
 import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.imagem.Imagem;
+import br.com.zup.desafios.ecommerce.produto.opiniao.Opiniao;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 
 import javax.persistence.CascadeType;
@@ -42,6 +43,8 @@ public class Produto {
     private List<Imagem> imagens;
     @ManyToOne
     private Usuario dono;
+    @OneToMany(mappedBy = "produto")
+    private List<Opiniao> opinioes;
 
     @Deprecated
     public Produto() {
