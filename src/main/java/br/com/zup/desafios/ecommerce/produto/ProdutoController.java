@@ -4,9 +4,12 @@ import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.categoria.CategoriaRepository;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.CaracteristicaRepository;
+import br.com.zup.desafios.ecommerce.produto.imagem.detalhe.ProdutoDetailResponse;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,6 +20,7 @@ import javax.validation.Valid;
 import java.util.List;
 import java.util.Set;
 
+import static br.com.zup.desafios.ecommerce.util.Path.ID;
 import static br.com.zup.desafios.ecommerce.util.Path.PRODUTOS;
 import static br.com.zup.desafios.ecommerce.util.Path.V1;
 
@@ -44,4 +48,13 @@ public class ProdutoController {
         return ResponseEntity.ok(ProdutoResponse.convert(produto));
     }
 
+    @GetMapping(ID)
+    public ResponseEntity<ProdutoDetailResponse> consulta(@PathVariable Long id){
+        if(!produtoRepository.existsById(id)) {
+            return ResponseEntity.badRequest().build();
+        }
+        Produto produto = produtoRepository.getOne(id);
+
+        return ResponseEntity.ok(ProdutoDetailResponse.convert(produto));
+    }
 }

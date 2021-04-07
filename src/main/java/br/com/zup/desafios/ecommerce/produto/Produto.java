@@ -4,6 +4,8 @@ import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.imagem.Imagem;
 import br.com.zup.desafios.ecommerce.produto.opiniao.Opiniao;
+import br.com.zup.desafios.ecommerce.produto.opiniao.Opinioes;
+import br.com.zup.desafios.ecommerce.produto.pergunta.Pergunta;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 
 import javax.persistence.CascadeType;
@@ -45,6 +47,8 @@ public class Produto {
     private Usuario dono;
     @OneToMany(mappedBy = "produto")
     private List<Opiniao> opinioes;
+    @OneToMany(mappedBy = "produto")
+    private List<Pergunta> perguntas;
 
     @Deprecated
     public Produto() {
@@ -94,6 +98,14 @@ public class Produto {
 
     public List<Imagem> getImagens() {
         return imagens;
+    }
+
+    public Opinioes getOpinioes() {
+        return new Opinioes(opinioes);
+    }
+
+    public List<Pergunta> getPerguntas() {
+        return perguntas;
     }
 
     public Usuario getDono() {
