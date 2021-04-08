@@ -1,7 +1,7 @@
 package br.com.zup.desafios.ecommerce.produto;
 
-import br.com.zup.desafios.ecommerce.categoria.Categoria;
-import br.com.zup.desafios.ecommerce.categoria.CategoriaRepository;
+import br.com.zup.desafios.ecommerce.produto.categoria.Categoria;
+import br.com.zup.desafios.ecommerce.produto.categoria.CategoriaRepository;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.CaracteristicaRepository;
 import br.com.zup.desafios.ecommerce.produto.detalhe.ProdutoDetailResponse;

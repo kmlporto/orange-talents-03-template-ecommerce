@@ -1,6 +1,6 @@
 package br.com.zup.desafios.ecommerce.produto;
 
-import br.com.zup.desafios.ecommerce.categoria.Categoria;
+import br.com.zup.desafios.ecommerce.produto.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.imagem.Imagem;
 import br.com.zup.desafios.ecommerce.produto.opiniao.Opiniao;

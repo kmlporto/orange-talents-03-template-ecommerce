@@ -1,4 +1,4 @@
-package br.com.zup.desafios.ecommerce.categoria;
+package br.com.zup.desafios.ecommerce.produto.categoria;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

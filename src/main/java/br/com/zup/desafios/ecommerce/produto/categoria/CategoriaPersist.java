@@ -1,4 +1,4 @@
-package br.com.zup.desafios.ecommerce.categoria;
+package br.com.zup.desafios.ecommerce.produto.categoria;
 
 import br.com.zup.desafios.ecommerce.util.annotation.Exist;
 import br.com.zup.desafios.ecommerce.util.annotation.UniqueValue;
