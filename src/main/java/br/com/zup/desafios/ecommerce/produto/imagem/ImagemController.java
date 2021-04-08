@@ -2,7 +2,7 @@ package br.com.zup.desafios.ecommerce.produto.imagem;
 
 import br.com.zup.desafios.ecommerce.produto.Produto;
 import br.com.zup.desafios.ecommerce.produto.ProdutoRepository;
-import br.com.zup.desafios.ecommerce.produto.imagem.upload.UploaderImage;
+import br.com.zup.desafios.ecommerce.externalService.uploader.image.UploaderImage;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

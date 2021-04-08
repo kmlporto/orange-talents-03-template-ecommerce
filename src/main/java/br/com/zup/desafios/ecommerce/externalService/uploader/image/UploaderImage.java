@@ -1,4 +1,4 @@
-package br.com.zup.desafios.ecommerce.produto.imagem.upload;
+package br.com.zup.desafios.ecommerce.externalService.uploader.image;
 
 import org.springframework.web.multipart.MultipartFile;
 
