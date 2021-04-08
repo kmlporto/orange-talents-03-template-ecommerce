@@ -1,6 +1,6 @@
 package br.com.zup.desafios.ecommerce.produto.opiniao;
 
-import br.com.zup.desafios.ecommerce.produto.imagem.detalhe.ProdutoOpiniaoResponse;
+import br.com.zup.desafios.ecommerce.produto.detalhe.ProdutoOpiniaoResponse;
 
 import java.util.List;
 import java.util.OptionalDouble;

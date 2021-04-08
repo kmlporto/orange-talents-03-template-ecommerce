@@ -1,4 +1,4 @@
-package br.com.zup.desafios.ecommerce.produto.imagem.detalhe;
+package br.com.zup.desafios.ecommerce.produto.detalhe;
 
 import br.com.zup.desafios.ecommerce.produto.Produto;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;

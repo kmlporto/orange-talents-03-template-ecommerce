@@ -4,7 +4,7 @@ import br.com.zup.desafios.ecommerce.categoria.Categoria;
 import br.com.zup.desafios.ecommerce.categoria.CategoriaRepository;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.Caracteristica;
 import br.com.zup.desafios.ecommerce.produto.caracteristica.CaracteristicaRepository;
-import br.com.zup.desafios.ecommerce.produto.imagem.detalhe.ProdutoDetailResponse;
+import br.com.zup.desafios.ecommerce.produto.detalhe.ProdutoDetailResponse;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
