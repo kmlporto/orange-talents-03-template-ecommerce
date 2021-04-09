@@ -1,6 +1,5 @@
 package br.com.zup.desafios.ecommerce.compra;
 
-import br.com.zup.desafios.ecommerce.externalService.gateway.pagamento.TipoGatewayPagamento;
 import br.com.zup.desafios.ecommerce.compra.item.Item;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 
@@ -25,7 +24,7 @@ public class Compra {
     @Enumerated(value = EnumType.STRING)
     private CompraStatus compraStatus = CompraStatus.INICIADA;
     @Enumerated(value = EnumType.STRING)
-    private TipoGatewayPagamento tipoGatewayPagamento;
+    private GatewayPagamento gatewayPagamento;
     @OneToMany(cascade = CascadeType.PERSIST)
     private List<Item> itens;
     @ManyToOne
@@ -35,9 +34,9 @@ public class Compra {
     public Compra() {
     }
 
-    public Compra(List<Item> itens, TipoGatewayPagamento tipoGatewayPagamento, Usuario comprador) {
+    public Compra(List<Item> itens, GatewayPagamento gatewayPagamento, Usuario comprador) {
         this.itens = itens;
-        this.tipoGatewayPagamento = tipoGatewayPagamento;
+        this.gatewayPagamento = gatewayPagamento;
         this.comprador = comprador;
     }
 
@@ -45,8 +44,8 @@ public class Compra {
         return id;
     }
 
-    public TipoGatewayPagamento getTipoGateway() {
-        return tipoGatewayPagamento;
+    public GatewayPagamento getGatewayPagamento() {
+        return gatewayPagamento;
     }
 
     public UUID getUuid() {

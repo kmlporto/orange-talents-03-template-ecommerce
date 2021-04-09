@@ -1,6 +1,5 @@
 package br.com.zup.desafios.ecommerce.compra;
 
-import br.com.zup.desafios.ecommerce.externalService.gateway.pagamento.TipoGatewayPagamento;
 import br.com.zup.desafios.ecommerce.compra.item.Item;
 import br.com.zup.desafios.ecommerce.compra.item.ItemPersist;
 import br.com.zup.desafios.ecommerce.produto.ProdutoRepository;
@@ -18,13 +17,13 @@ public class CompraPersist {
     private List<ItemPersist> itens;
 
     @NotNull
-    private TipoGatewayPagamento pagamento;
+    private GatewayPagamento pagamento;
 
     public List<ItemPersist> getItens() {
         return itens;
     }
 
-    public CompraPersist(@Valid @NotEmpty List<ItemPersist> itens, @NotNull TipoGatewayPagamento pagamento) {
+    public CompraPersist(@Valid @NotEmpty List<ItemPersist> itens, @NotNull GatewayPagamento pagamento) {
         this.itens = itens;
         this.pagamento = pagamento;
     }
