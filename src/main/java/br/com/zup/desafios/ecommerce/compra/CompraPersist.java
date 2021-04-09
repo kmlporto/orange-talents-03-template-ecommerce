@@ -20,6 +20,10 @@ public class CompraPersist {
     @NotNull
     private TipoGatewayPagamento pagamento;
 
+    public List<ItemPersist> getItens() {
+        return itens;
+    }
+
     public CompraPersist(@Valid @NotEmpty List<ItemPersist> itens, @NotNull TipoGatewayPagamento pagamento) {
         this.itens = itens;
         this.pagamento = pagamento;
