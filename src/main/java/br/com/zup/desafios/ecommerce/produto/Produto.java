@@ -124,7 +124,7 @@ public class Produto {
     }
 
     public void abaterEstoque(@NotNull @Positive int quantidade){
-        if(quantidadeDisponivel > quantidade){
+        if(quantidadeDisponivel >= quantidade){
             this.quantidadeDisponivel -= quantidade;
         }
     }
