@@ -17,6 +17,8 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 import java.math.BigDecimal;
 import java.time.LocalDateTime;
 import java.util.List;
@@ -119,5 +121,11 @@ public class Produto {
 
     public boolean pertenceAo(Usuario usuarioLogado) {
         return dono.equals(usuarioLogado);
+    }
+
+    public void abaterEstoque(@NotNull @Positive int quantidade){
+        if(quantidadeDisponivel > quantidade){
+            this.quantidadeDisponivel -= quantidade;
+        }
     }
 }

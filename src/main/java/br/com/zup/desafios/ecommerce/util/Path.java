@@ -11,4 +11,5 @@ public class Path {
     public final static String PERGUNTAS = "/perguntas";
     public final static String CATEGORIAS = "/categorias";
     public final static String CARACTERISTICAS = "/caracteristicas";
+    public final static String COMPRAS = "/compras";
 }
