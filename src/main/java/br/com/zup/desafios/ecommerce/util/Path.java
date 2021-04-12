@@ -12,4 +12,9 @@ public class Path {
     public final static String CATEGORIAS = "/categorias";
     public final static String CARACTERISTICAS = "/caracteristicas";
     public final static String COMPRAS = "/compras";
+    public final static String PAGAMENTOS = "/pagamentos";
+    public final static String PAYPAL = "/paypal";
+    public final static String PAGSEGURO = "/pagseguro";
+    public final static String RANKING = "/ranking";
+    public final static String NOTA_FISCAL = "/nota-fiscal";
 }

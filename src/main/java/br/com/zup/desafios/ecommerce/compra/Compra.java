@@ -1,6 +1,7 @@
 package br.com.zup.desafios.ecommerce.compra;
 
 import br.com.zup.desafios.ecommerce.compra.item.Item;
+import br.com.zup.desafios.ecommerce.compra.transacao.Transacao;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 
 import javax.persistence.CascadeType;
@@ -13,7 +14,9 @@ import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import java.util.List;
+import java.util.Set;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
 @Entity
 public class Compra {
@@ -29,6 +32,8 @@ public class Compra {
     private List<Item> itens;
     @ManyToOne
     private Usuario comprador;
+    @OneToMany(mappedBy = "compra", cascade = CascadeType.ALL)
+    private List<Transacao> transacoes;
 
     @Deprecated
     public Compra() {
@@ -52,9 +57,41 @@ public class Compra {
         return uuid;
     }
 
+
+    public Usuario getComprador() {
+        return comprador;
+    }
+
+    public List<Item> getItens() {
+        return itens;
+    }
+
+    public Set<Long> getIdsDonos(){
+        return itens.stream().map(item -> item.getProduto().getDono().getId()).collect(Collectors.toSet());
+    }
+
     public Compra abaterEstoque(){
         this.itens.forEach(item -> item.getProduto().abaterEstoque(item.getQuantidade()));
         return this;
     }
 
+    public boolean adicionaTransacao(Transacao transacao) {
+        if(!processadaComSucesso()){
+            this.transacoes.add(transacao);
+            atualizaStatusCompra(transacao);
+            return true;
+        }
+        return false;
+    }
+
+    public void atualizaStatusCompra(Transacao transacao){
+        if(transacao.comSucesso()){
+            compraStatus = CompraStatus.SUCESSO;
+        }else
+            compraStatus = CompraStatus.FALHA;
+    }
+
+    public boolean processadaComSucesso(){
+        return compraStatus.equals(CompraStatus.SUCESSO);
+    }
 }

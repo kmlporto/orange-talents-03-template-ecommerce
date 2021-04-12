@@ -3,8 +3,8 @@ package br.com.zup.desafios.ecommerce.compra;
 import org.springframework.web.util.UriComponentsBuilder;
 
 public enum GatewayPagamento {
-    PAYPAL("paypal.com/", "/retorno-paypal/{id}"),
-    PAGSEGURO("pagseguro.com/", "/retorno-pagseguro/{id}");
+    PAYPAL("paypal.com/", "/pagamentos/compras/{id}/paypal"),
+    PAGSEGURO("pagseguro.com/", "/pagamentos/compras/{id}/pagseguro");
 
     private String url;
     private String retorno;

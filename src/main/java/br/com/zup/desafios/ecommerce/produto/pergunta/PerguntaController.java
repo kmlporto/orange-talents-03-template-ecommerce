@@ -2,7 +2,7 @@ package br.com.zup.desafios.ecommerce.produto.pergunta;
 
 import br.com.zup.desafios.ecommerce.produto.Produto;
 import br.com.zup.desafios.ecommerce.produto.ProdutoRepository;
-import br.com.zup.desafios.ecommerce.produto.pergunta.envio.SenderEmailPergunta;
+import br.com.zup.desafios.ecommerce.externalService.email.SenderEmail;
 import br.com.zup.desafios.ecommerce.usuario.Usuario;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -21,12 +21,12 @@ public class PerguntaController {
 
     private final ProdutoRepository produtoRepository;
     private final PerguntaRepository perguntaRepository;
-    private final SenderEmailPergunta senderEmailPergunta;
+    private final SenderEmail senderEmail;
 
-    public PerguntaController(ProdutoRepository produtoRepository, PerguntaRepository perguntaRepository, SenderEmailPergunta senderEmailPergunta) {
+    public PerguntaController(ProdutoRepository produtoRepository, PerguntaRepository perguntaRepository, SenderEmail senderEmail) {
         this.produtoRepository = produtoRepository;
         this.perguntaRepository = perguntaRepository;
-        this.senderEmailPergunta = senderEmailPergunta;
+        this.senderEmail = senderEmail;
     }
 
 
@@ -37,7 +37,7 @@ public class PerguntaController {
         }
         Produto produto = produtoRepository.getOne(id);
         Pergunta pergunta = perguntaRepository.save(perguntaPersist.convert(usuarioLogado, produto));
-        senderEmailPergunta.enviarEmail(pergunta);
+        senderEmail.emailPergunta(pergunta);
 
         return ResponseEntity.ok(PerguntaResponse.convert(pergunta));
     }
