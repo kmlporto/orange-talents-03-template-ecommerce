@@ -44,6 +44,7 @@ public class PaymentController {
         Compra compra = compraRepository.getOne(idCompra);
         Transacao transacao = paymentRequest.convert(compra);
         boolean transacaoAdicionada = compra.adicionaTransacao(transacao);
+        compra = compraRepository.save(compra);
 
         paymentProcess.process(compra, transacaoAdicionada, uriLocal);
 
